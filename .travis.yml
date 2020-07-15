@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 7.3
+
+addons:
+  chrome: stable
+
+install:
+  - cp .env.example .env
+  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+  - php artisan key:generate
+
+script:
+  - phpunit --testsuit Unit
